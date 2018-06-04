@@ -3,11 +3,11 @@
         <h1>All TODOS</h1>
         <div v-for="todo in todos" class="single-blog">
             <h2>{{ todo.title }}</h2>
-            <p>{{ todo.completed }}</p>
+            <p> Completed: {{ todo.completed }}</p>
             <p>{{ todo.id }}</p>
-            <p>{{ todo.priority }}</p>
+            <p>Priority: {{ todo.priority }}</p>
             <button v-on:click="deleteTodo(todo.id)">Delete</button>
-            <!--button v-on:click.prevent="onSubmit()"> Edit </button-->
+            
             <router-link :to="{ name: 'add-todo', params: { id: todo.id } }">
                 <button >Edit</button>
             </router-link>

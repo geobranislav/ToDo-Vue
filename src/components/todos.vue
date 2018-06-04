@@ -39,13 +39,14 @@ export default{
 
 
     },
-    created() {
+    beforeRouteEnter (to, from, next) {
       todosService.getAll()
-          .then((response) => {
-              this.todos = response.data;
-              //console.log(response);
-          })
-      }
+        .then((response) => {
+            next((vm) => {
+              vm.todos = response.data
+            })
+        })
+    }
 }
 </script>
 

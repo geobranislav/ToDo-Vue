@@ -1,16 +1,32 @@
 <template>
     <nav>
         <ul>
-            <li><router-link to="/" exact>Todos</router-link></li>
             <li><router-link to="/add" exact>Add Todo</router-link></li>
-            <li><router-link to="/singl" exact>singl</router-link></li>
             <li><router-link to="/todos" exact>todos</router-link></li>
+            <a href="#"  @click="logout">Logout </a>
         </ul>
     </nav>
 </template>
 
 <script>
-export default {}
+
+  import { authService } from '../services/AuthService';
+
+  export default {
+    data() {
+      return {
+        isAuthenticated: authService.isAuthenticated()
+      }
+    },
+    methods: {
+      logout() {
+        authService.logout()
+         this.isAuthenticated = false
+          this.$router.push({ name: 'Login' })
+      }
+    }
+  }
+
 </script>
 
 <style scoped>
